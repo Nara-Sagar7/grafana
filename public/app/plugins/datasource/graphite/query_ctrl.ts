@@ -38,6 +38,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   updateDataview(view) {
     this.dataview = view;
+    this.targetChanged();
   }
 
   parseTarget() {
@@ -224,7 +225,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   updateModelTarget() {
     // render query
-    var metricPath = this.getSegmentPathUpTo(this.segments.length);
+    var metricPath = this.getSegmentPathUpTo(this.segments.length) + this.dataview;
     this.target.target = _.reduce(this.functions, this.wrapFunction, metricPath);
 
     // render nested query

@@ -23,6 +23,8 @@ export class GraphiteQueryCtrl extends QueryCtrl {
   constructor($scope, $injector, private uiSegmentSrv, private templateSrv) {
     super($scope, $injector);
 
+    this.dataview = 'avg';
+    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
     if (this.target) {
       this.target.target = this.target.target || '';
       this.parseTarget();
@@ -41,8 +43,6 @@ export class GraphiteQueryCtrl extends QueryCtrl {
   parseTarget() {
     this.functions = [];
     this.segments = [];
-    this.dataview = 'avg';
-    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
     this.error = null;
 
     if (this.target.textEditor) {

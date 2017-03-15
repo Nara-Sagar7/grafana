@@ -27,11 +27,11 @@
 	<div class="gf-form">
 		<label class="gf-form-label dropdown">
 			<a class="pointer dropdown-toggle" data-toggle="dropdown" tabindex="1">
-				<i class="fa">{{ctrl.dataview}}</i>
+				<i class="fa">{{ctrl.queryCtrl.dataview}}</i>
 			</a>
 			<ul class="dropdown-menu pull-right" role="menu">
-				<li role="menuitem" ng-repeat="view in ctrl.dataviews" ng-if="ctrl.hasTextEditMode">
-					<a tabindex="1" ng-src="view" ng-click="ctrl.updateDataview(view)">{{view}}</a>
+				<li role="menuitem" ng-repeat="view in ctrl.queryCtrl.dataviews">
+					<a tabindex="1" ng-click="ctrl.queryCtrl.updateDataview(view)">{{view}}</a>
 				</li>
 			</ul>
 		</label>

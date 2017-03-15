@@ -52,6 +52,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
     var parser = new Parser(this.target.target);
     var astNode = parser.getAst();
+
     if (astNode === null) {
       this.checkOtherSegments(0);
       return;
@@ -108,11 +109,11 @@ export class GraphiteQueryCtrl extends QueryCtrl {
         this.addFunctionParameter(func, astNode.value, index, true);
       break;
       case 'metric':
+        this.dataview = astNode.dataview;
         if (this.segments.length > 0) {
         if (astNode.segments.length !== 1) {
           throw { message: 'Multiple metric params not supported, use text editor.' };
         }
-        this.dataview = astNode.dataview;
         this.addFunctionParameter(func, astNode.segments[0].value, index, true);
         break;
       }
@@ -225,7 +226,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   updateModelTarget() {
     // render query
-    var metricPath = this.getSegmentPathUpTo(this.segments.length) + this.dataview;
+    var metricPath = this.getSegmentPathUpTo(this.segments.length) + ':' + this.dataview;
     this.target.target = _.reduce(this.functions, this.wrapFunction, metricPath);
 
     // render nested query

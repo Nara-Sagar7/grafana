@@ -226,7 +226,10 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   updateModelTarget() {
     // render query
-    var metricPath = this.getSegmentPathUpTo(this.segments.length) + ':' + this.dataview;
+    var metricPath = this.getSegmentPathUpTo(this.segments.length);
+    if (metricPath !== '') {
+      metricPath = metricPath + ':' + this.dataview;
+    }
     this.target.target = _.reduce(this.functions, this.wrapFunction, metricPath);
 
     // render nested query

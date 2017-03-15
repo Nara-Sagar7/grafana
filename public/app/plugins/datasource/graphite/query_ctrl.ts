@@ -32,9 +32,15 @@ export class GraphiteQueryCtrl extends QueryCtrl {
     this.parseTarget();
   }
 
+  updateDataview(view) {
+    this.dataview = view;
+  }
+  
   parseTarget() {
     this.functions = [];
     this.segments = [];
+    this.dataview = 'avg';
+    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate']
     this.error = null;
 
     if (this.target.textEditor) {
@@ -103,6 +109,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
         if (astNode.segments.length !== 1) {
           throw { message: 'Multiple metric params not supported, use text editor.' };
         }
+        this.dataview = astNode.dataview;
         this.addFunctionParameter(func, astNode.segments[0].value, index, true);
         break;
       }

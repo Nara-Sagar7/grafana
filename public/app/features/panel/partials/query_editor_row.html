@@ -25,9 +25,9 @@
 	</div>
 
 	<div class="gf-form">
-		<label class="gf-form-label dropdown">
+		<label class="gf-form-label dropdown" ng-show="!ctrl.queryCtrl.target.textEditor">
 			<a class="pointer dropdown-toggle" data-toggle="dropdown" tabindex="1">
-				<i class="fa">{{ctrl.queryCtrl.dataview}}</i>
+				<span>{{ctrl.queryCtrl.dataview}}</span>
 			</a>
 			<ul class="dropdown-menu pull-right" role="menu">
 				<li role="menuitem" ng-repeat="view in ctrl.queryCtrl.dataviews">

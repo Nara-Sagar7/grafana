@@ -6,10 +6,10 @@ import (
 	"runtime"
 
 	"github.com/codegangsta/cli"
-	"github.com/grafana/grafana/pkg/cmd/grafana-cli/commands"
-	"github.com/grafana/grafana/pkg/cmd/grafana-cli/logger"
-	"github.com/grafana/grafana/pkg/cmd/grafana-cli/services"
-	"github.com/grafana/grafana/pkg/cmd/grafana-cli/utils"
+	"github.com/shevyf/grafana/pkg/cmd/grafana-cli/commands"
+	"github.com/shevyf/grafana/pkg/cmd/grafana-cli/logger"
+	"github.com/shevyf/grafana/pkg/cmd/grafana-cli/services"
+	"github.com/shevyf/grafana/pkg/cmd/grafana-cli/utils"
 )
 
 var version = "master"
@@ -23,7 +23,7 @@ func main() {
 	app.Name = "Grafana cli"
 	app.Usage = ""
 	app.Author = "Grafana Project"
-	app.Email = "https://github.com/grafana/grafana"
+	app.Email = "https://github.com/shevyf/grafana"
 	app.Version = version
 	app.Flags = []cli.Flag{
 		cli.StringFlag{

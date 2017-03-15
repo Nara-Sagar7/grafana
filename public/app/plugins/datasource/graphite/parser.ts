@@ -1,5 +1,6 @@
 
 import {Lexer} from './lexer';
+import _ from 'lodash';
 
 export function Parser(expression) {
   this.expression = expression;
@@ -129,10 +130,10 @@ Parser.prototype = {
     var lastseg = lastsegvalue.split(':');
     if (lastseg.length > 1) {
       var finalview = lastseg[lastseg.length-1];
-      dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
-      if dataviews.includes(finalview) {
+      var dataviews: any[] = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
+      if (_.includes(dataviews,finalview)) {
           node.dataview = finalview;
-          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - finalview.length);
+          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - (finalview.length+1));
           node.segments[node.segments.length-1].value = lastsegvalue;
       }
     }

@@ -16,6 +16,8 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   functions: any[];
   segments: any[];
+  dataview: string;
+  dataviews: any[];
 
   /** @ngInject **/
   constructor($scope, $injector, private uiSegmentSrv, private templateSrv) {

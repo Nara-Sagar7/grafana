@@ -35,12 +35,12 @@ export class GraphiteQueryCtrl extends QueryCtrl {
   updateDataview(view) {
     this.dataview = view;
   }
-  
+
   parseTarget() {
     this.functions = [];
     this.segments = [];
     this.dataview = 'avg';
-    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate']
+    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
     this.error = null;
 
     if (this.target.textEditor) {

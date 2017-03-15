@@ -123,17 +123,17 @@ Parser.prototype = {
       node.segments.push(segment);
     }
 
-    // hacky way to check if, on splitting on colon, the last segment is a dataview. 
+    // hacky way to check if, on splitting on colon, the last segment is a dataview.
     // Amends last segment value if so.
-    var lastsegvalue = node.segments[node.segments.length-1].value
+    var lastsegvalue = node.segments[node.segments.length-1].value;
     var lastseg = lastsegvalue.split(':');
     if (lastseg.length > 1) {
       var finalview = lastseg[lastseg.length-1];
       dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
       if dataviews.includes(finalview) {
           node.dataview = finalview;
-          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - finalview.length)
-          node.segments[node.segments.length-1].value = lastsegvalue
+          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - finalview.length);
+          node.segments[node.segments.length-1].value = lastsegvalue;
       }
     }
     return node;

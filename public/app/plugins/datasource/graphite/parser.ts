@@ -126,6 +126,7 @@ Parser.prototype = {
 
     // hacky way to check if, on splitting on colon, the last segment is a dataview.
     // Amends last segment value if so.
+
     var lastsegvalue = node.segments[node.segments.length-1].value;
     var lastseg = lastsegvalue.split(':');
     if (lastseg.length > 1) {
@@ -136,9 +137,9 @@ Parser.prototype = {
         var result = dataviews[i].exec(finalview);
         if (result) {
           node.dataview.name = /[a-zA-Z]{1,3}/.exec(result[0]);
-          if (result.length > 1){
+          if (result.length > 1) {
             node.dataview.name += 'X';
-            node.dataview.variable = parseInt(result[1]) || parseInt(result[2]); 
+            node.dataview.variable = parseInt(result[1]) || parseInt(result[2]);
           };
         };
         break;

@@ -27,11 +27,14 @@
 	<div class="gf-form">
 		<label class="gf-form-label dropdown" ng-show="!ctrl.queryCtrl.target.textEditor">
 			<a class="pointer dropdown-toggle" data-toggle="dropdown" tabindex="1">
-				<span>{{ctrl.queryCtrl.dataview}}</span>
+				<span>{{ctrl.queryCtrl.dataview.firstDisplayed}}</span>
+				<span ng-show="!view.editing">{{ctrl.queryCtrl.dataview.variable}}</span>
+				<input type="text" ng-model="view.variable" ng-show="view.editing">
+				<span>{{ctrl.queryCtrl.dataview.lastDisplayed}}</span><!-- insert extra spans here -->
 			</a>
 			<ul class="dropdown-menu pull-right" role="menu">
 				<li role="menuitem" ng-repeat="view in ctrl.queryCtrl.dataviews">
-					<a tabindex="1" ng-click="ctrl.queryCtrl.updateDataview(view)">{{view}}</a>
+					<a tabindex="1" ng-click="ctrl.queryCtrl.updateDataview(view)">{{view.name}}</a>
 				</li>
 			</ul>
 		</label>

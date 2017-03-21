@@ -10,7 +10,7 @@ import gfunc from './gfunc';
 import {Parser} from './parser';
 import {QueryCtrl} from 'app/plugins/sdk';
 import appEvents from 'app/core/app_events';
-import {dataviews} from './dataviews';
+import {dataviews, viewRender} from './dataviews';
 
 export class GraphiteQueryCtrl extends QueryCtrl {
   static templateUrl = 'partials/query.editor.html';
@@ -26,6 +26,8 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
     this.dataviews = dataviews;
     this.dataview = this.dataviews['avg'];
+    this.dataview.editing = false;
+
     if (this.target) {
       this.target.target = this.target.target || '';
       this.parseTarget();
@@ -228,8 +230,10 @@ export class GraphiteQueryCtrl extends QueryCtrl {
   updateModelTarget() {
     // render query
     var metricPath = this.getSegmentPathUpTo(this.segments.length);
+
     if (metricPath !== '') {
-      metricPath = metricPath + ':' + this.dataview;
+      var renderedView = viewRender(this.dataview);
+      metricPath = metricPath + ':' + renderedView;
     }
     this.target.target = _.reduce(this.functions, this.wrapFunction, metricPath);
 

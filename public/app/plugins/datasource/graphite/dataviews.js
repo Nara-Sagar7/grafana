@@ -6,12 +6,12 @@ var dataviews = {
   min: {name: 'maximum', firstDisplayed: 'max'},
   obvs: {name: 'observations', firstDisplayed: 'obvs'},
   sumrate: {name: 'sum per second', firstDisplayed: 'sumrate'},
-  obvsrate: {name: 'observations per second', firstDisplayed: 'obvsrate'),
-  pctX: {name: 'percentile', variable: 90, lastDisplayed: 'pct') 
+  obvsrate: {name: 'observations per second', firstDisplayed: 'obvsrate'},
+  pctX: {name: 'percentile', variable: 90, lastDisplayed: 'pct'} 
 };
 
 var viewRender = function(view) {
   return (view.firstDisplayed || '') + (view.variable || '') + (view.lastDisplayed || '')
 }; 
 
-// export type?  
+export { dataviews, viewRender };

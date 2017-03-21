@@ -1,6 +1,5 @@
 define({
-
-  var allViews = {
+  allViews: {
     avg: {name: 'average', firstDisplayed: 'avg'},
     sum: {name: 'sum', firstDisplayed: 'sum'},
     sumX: {name: 'sum per X seconds', variable: 60, firstDisplayed: 'sum'},
@@ -12,7 +11,7 @@ define({
     pctX: {name: 'percentile', variable: 90, lastDisplayed: 'pct'}
   };
 
-  function viewRender(view) {
+  viewRender: function(view) {
     'use strict';
     return (view.firstDisplayed || '') + (view.variable || '') + (view.lastDisplayed || '');
   },

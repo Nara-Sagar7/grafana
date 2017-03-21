@@ -14,7 +14,7 @@ define({
 
   function viewRender(view) {
     'use strict';
-    return (view.firstDisplayed || '') + (view.variable || '') + (view.lastDisplayed || '')
-  };,
+    return (view.firstDisplayed || '') + (view.variable || '') + (view.lastDisplayed || '');
+  },
 
 });

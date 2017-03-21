@@ -9,11 +9,11 @@ define({
     sumrate: {name: 'sum per second', firstDisplayed: 'sumrate'},
     obvsrate: {name: 'observations per second', firstDisplayed: 'obvsrate'},
     pctX: {name: 'percentile', variable: 90, lastDisplayed: 'pct'}
-  };
+  },
 
   viewRender: function(view) {
     'use strict';
     return (view.firstDisplayed || '') + (view.variable || '') + (view.lastDisplayed || '');
-  },
+  }
 
 });

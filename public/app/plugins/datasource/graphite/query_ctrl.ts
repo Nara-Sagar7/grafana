@@ -10,21 +10,22 @@ import gfunc from './gfunc';
 import {Parser} from './parser';
 import {QueryCtrl} from 'app/plugins/sdk';
 import appEvents from 'app/core/app_events';
+import {dataviews} from './dataviews';
 
 export class GraphiteQueryCtrl extends QueryCtrl {
   static templateUrl = 'partials/query.editor.html';
 
   functions: any[];
   segments: any[];
-  dataview: string;
+  dataview: {};
   dataviews: any[];
 
   /** @ngInject **/
   constructor($scope, $injector, private uiSegmentSrv, private templateSrv) {
     super($scope, $injector);
 
-    this.dataview = 'avg';
-    this.dataviews = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
+    this.dataviews = dataviews;
+    this.dataview = this.dataviews['avg'];
     if (this.target) {
       this.target.target = this.target.target || '';
       this.parseTarget();

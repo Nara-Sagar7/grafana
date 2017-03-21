@@ -108,7 +108,7 @@ Parser.prototype = {
     var node = {
       type: 'metric',
       segments: [],
-      dataview: 'avg'
+      dataview: {name: 'avg', variable:''}
     };
 
     node.segments.push(this.metricSegment());
@@ -130,13 +130,21 @@ Parser.prototype = {
     var lastseg = lastsegvalue.split(':');
     if (lastseg.length > 1) {
       var finalview = lastseg[lastseg.length-1];
-      var dataviews: any[] = ['avg','sum','min','max','obvs','sumrate','obvsrate'];
-      if (_.includes(dataviews,finalview)) {
-          node.dataview = finalview;
-          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - (finalview.length+1));
-          node.segments[node.segments.length-1].value = lastsegvalue;
-      }
+      var dataviews: any[] = [/avg/,/(sum)(\d+)/,/sum/,/min/,/max/,/obvs/,/sumrate/,/obvsrate/,/(\d{1,2})(pct)/];
+
+      for (i=0;i < dataviews.length;i++) {
+        var result = dataviews[i].exec(finalview);
+        if (result) {
+          node.dataview.name = /[a-zA-Z]{1,3}/.exec(result[0]);
+          if (result.length > 1){
+            node.dataview.name += 'X';
+            node.dataview.variable = parseInt(result[1]) || parseInt(result[2]); 
+          };
+        };
+        break;
+      };
     }
+
     return node;
   },
 

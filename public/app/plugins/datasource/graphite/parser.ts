@@ -108,7 +108,7 @@ Parser.prototype = {
     var node = {
       type: 'metric',
       segments: [],
-      dataview: {name: 'avg', variable:''}
+      dataview: {name: 'avg', variable: ''}
     };
 
     node.segments.push(this.metricSegment());
@@ -133,7 +133,7 @@ Parser.prototype = {
       var finalview = lastseg[lastseg.length-1];
       var dataviews: any[] = [/avg/,/(sum)(\d+)/,/sum/,/min/,/max/,/obvs/,/sumrate/,/obvsrate/,/(\d{1,2})(pct)/];
 
-      for (i=0;i < dataviews.length;i++) {
+      for (i = 0; i < dataviews.length; i++) {
         var result = dataviews[i].exec(finalview);
         if (result) {
           node.dataview.name = /[a-zA-Z]{1,3}/.exec(result[0]);

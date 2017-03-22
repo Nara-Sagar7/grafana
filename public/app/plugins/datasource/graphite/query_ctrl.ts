@@ -27,7 +27,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
     this.dataviews = dataviews.getAllViews();
     this.dataview = this.dataviews['avg'];
     this.dataview['editing'] = false;
-
+    console.log(this.dataview);
     if (this.target) {
       this.target.target = this.target.target || '';
       this.parseTarget();
@@ -112,7 +112,8 @@ export class GraphiteQueryCtrl extends QueryCtrl {
         this.addFunctionParameter(func, astNode.value, index, true);
       break;
       case 'metric':
-        this.dataview = astNode.dataview;
+        this.dataview = this.dataviews[astNode.dataview.name];
+        this.dataview['variable'] = astNode.dataview.variable || '';
         if (this.segments.length > 0) {
         if (astNode.segments.length !== 1) {
           throw { message: 'Multiple metric params not supported, use text editor.' };

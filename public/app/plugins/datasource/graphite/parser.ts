@@ -136,18 +136,21 @@ Parser.prototype = {
       for (var i = 0; i < dataviews.length; i++) {
         var result = dataviews[i].exec(finalview);
         if (result) {
+          console.log(result);
           node.dataview.name = /[a-zA-Z]+/.exec(result[0])[0];
           if (result.length > 1) {
             node.dataview.name += 'X';
             var variable = parseInt(result[1]) || parseInt(result[2]);
             node.dataview.variable = variable.toString();
           };
+          lastsegvalue = lastsegvalue.slice(0,lastsegvalue.length - (finalview.length+1));
+          node.segments[node.segments.length-1].value = lastsegvalue;
           break;
         };
 
       };
     }
-
+    console.log(node);
     return node;
   },
 

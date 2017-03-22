@@ -140,7 +140,7 @@ Parser.prototype = {
           if (result.length > 1) {
             node.dataview.name += 'X';
             var variable = parseInt(result[1]) || parseInt(result[2]);
-            node.dataview.variable = variable.toString()
+            node.dataview.variable = variable.toString();
           };
         };
         break;

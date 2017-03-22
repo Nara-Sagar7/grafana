@@ -21,5 +21,5 @@ define(function() {
     getAllViews: function() {
       return allViews;
     }
-  }
+  };
 });

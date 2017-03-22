@@ -10,7 +10,7 @@ import gfunc from './gfunc';
 import {Parser} from './parser';
 import {QueryCtrl} from 'app/plugins/sdk';
 import appEvents from 'app/core/app_events';
-import {dataviews, viewRender} from './dataviews';
+import dataviews from './dataviews';
 
 export class GraphiteQueryCtrl extends QueryCtrl {
   static templateUrl = 'partials/query.editor.html';
@@ -24,9 +24,9 @@ export class GraphiteQueryCtrl extends QueryCtrl {
   constructor($scope, $injector, private uiSegmentSrv, private templateSrv) {
     super($scope, $injector);
 
-    this.dataviews = dataviews;
+    this.dataviews = dataviews.getAllViews();
     this.dataview = this.dataviews['avg'];
-    this.dataview.editing = false;
+    this.dataview['editing'] = false;
 
     if (this.target) {
       this.target.target = this.target.target || '';
@@ -232,7 +232,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
     var metricPath = this.getSegmentPathUpTo(this.segments.length);
 
     if (metricPath !== '') {
-      var renderedView = viewRender(this.dataview);
+      var renderedView = dataviews.viewRender(this.dataview);
       metricPath = metricPath + ':' + renderedView;
     }
     this.target.target = _.reduce(this.functions, this.wrapFunction, metricPath);

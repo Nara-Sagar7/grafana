@@ -133,13 +133,14 @@ Parser.prototype = {
       var finalview = lastseg[lastseg.length-1];
       var dataviews: any[] = [/avg/,/(sum)(\d+)/,/sum/,/min/,/max/,/obvs/,/sumrate/,/obvsrate/,/(\d{1,2})(pct)/];
 
-      for (i = 0; i < dataviews.length; i++) {
+      for (var i = 0; i < dataviews.length; i++) {
         var result = dataviews[i].exec(finalview);
         if (result) {
-          node.dataview.name = /[a-zA-Z]{1,3}/.exec(result[0]);
+          node.dataview.name = /[a-zA-Z]+/.exec(result[0])[0];
           if (result.length > 1) {
             node.dataview.name += 'X';
-            node.dataview.variable = parseInt(result[1]) || parseInt(result[2]);
+            var variable = parseInt(result[1]) || parseInt(result[2]);
+            node.dataview.variable = variable.toString()
           };
         };
         break;

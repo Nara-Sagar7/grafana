@@ -17,7 +17,7 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   functions: any[];
   segments: any[];
-  dataview: {};
+  dataview: any;
   dataviews: any[];
 
   /** @ngInject **/
@@ -26,7 +26,6 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
     this.dataviews = dataviews.getAllViews();
     this.dataview = this.dataviews['avg'];
-    this.dataview['editing'] = false;
     console.log(this.dataview);
     if (this.target) {
       this.target.target = this.target.target || '';
@@ -36,6 +35,11 @@ export class GraphiteQueryCtrl extends QueryCtrl {
 
   toggleEditorMode() {
     this.target.textEditor = !this.target.textEditor;
+    this.parseTarget();
+  }
+
+  toggleViewEditMode() {
+    this.dataview.editing = !this.dataview.editing;
     this.parseTarget();
   }
 

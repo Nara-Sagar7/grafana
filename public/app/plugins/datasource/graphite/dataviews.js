@@ -11,7 +11,7 @@ define(function() {
     sumrate: {name: 'sum per second', firstDisplayed: 'sumrate'},
     obvsrate: {name: 'observations per second', firstDisplayed: 'obvsrate'},
     pctX: {name: 'percentile', variable: '90', lastDisplayed: 'pct'}
-  },
+  };
 
   return {
     viewRender: function(view) {

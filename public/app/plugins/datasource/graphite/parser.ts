@@ -142,8 +142,9 @@ Parser.prototype = {
             var variable = parseInt(result[1]) || parseInt(result[2]);
             node.dataview.variable = variable.toString();
           };
+          break;
         };
-        break;
+
       };
     }
 

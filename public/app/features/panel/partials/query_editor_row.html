@@ -26,11 +26,11 @@
 
 	<div class="gf-form">
 		<label class="gf-form-label dropdown" ng-show="!ctrl.queryCtrl.target.textEditor">
-			<a class="pointer dropdown-toggle" data-toggle="dropdown" tabindex="1">
-				<span>{{ctrl.queryCtrl.dataview.firstDisplayed}}</span>
+			<a tabindex="1">
+				<a class="pointer dropdown-toggle" data-toggle="dropdown">{{ctrl.queryCtrl.dataview.firstDisplayed}}</a>
 				<span ng-show="!ctrl.queryCtrl.dataview.editing" edit-dataview-value>{{ctrl.queryCtrl.dataview.variable}}</span>
-				<input type="text" ng-model="ctrl.queryCtrl.dataview.variable" ng-blur="ctrl.queryCtrl.toggleViewEditMode()" ng-show="ctrl.queryCtrl.dataview.editing">
-				<span>{{ctrl.queryCtrl.dataview.lastDisplayed}}</span><!-- insert extra spans here -->
+				<input type="text" ng-model="ctrl.queryCtrl.dataview.variable" style="display: none;">
+				<a class="pointer dropdown-toggle" data-toggle="dropdown">{{ctrl.queryCtrl.dataview.lastDisplayed}}</a>
 			</a>
 			<ul class="dropdown-menu pull-right" role="menu">
 				<li role="menuitem" ng-repeat="view in ctrl.queryCtrl.dataviews">

@@ -13,16 +13,24 @@ function(angular, $) {
         link: function ($scope, elem) {
           var $elem = $(elem);
           var $input = $elem.next();
-          var ctrl = $scope.ctrl;
+          var ctrl = $scope.ctrl.queryCtrl;
 
-          $elem.click(function(event) {
-              event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-              console.log(ctrl);
-              ctrl.queryCtrl.dataview.editing = true;
-              setTimeout(function() {$input.focus();},200);
-              console.log($elem);
-              console.log($input);
+          $elem.click(function() {
+
+              $input.css('width', ($elem.width() + 10) + 'px');
+              $input.show();
+              $input.focus();
+              $input.select();
+
+              $elem.hide();
             });
+
+          $input.blur(function() {
+            $elem.show();
+            $input.hide();
+            $scope.$apply();
+            ctrl.targetChanged();
+          });
         }
       };
     });

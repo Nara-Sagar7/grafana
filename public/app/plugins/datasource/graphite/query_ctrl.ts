@@ -2,6 +2,7 @@
 
 import './add_graphite_func';
 import './func_editor';
+import './edit_view_variable';
 
 import angular from 'angular';
 import _ from 'lodash';

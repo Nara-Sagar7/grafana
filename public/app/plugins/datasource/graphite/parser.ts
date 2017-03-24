@@ -131,7 +131,7 @@ Parser.prototype = {
     var lastseg = lastsegvalue.split(':');
     if (lastseg.length > 1) {
       var finalview = lastseg[lastseg.length-1];
-      var dataviews: any[] = [/avg/,/(sum)(\d+)/,/sum/,/min/,/max/,/obvs/,/sumrate/,/obvsrate/,/(\d{1,2})(pct)/];
+      var dataviews: any[] = [/avg/,/sumrate/,/(sum)(\d+)/,/sum/,/min/,/max/,/obvs/,/obvsrate/,/(\d{1,2})(pct)/];
 
       for (var i = 0; i < dataviews.length; i++) {
         var result = dataviews[i].exec(finalview);
